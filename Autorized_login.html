@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <div class="form-group">
+      <input type="text" id="username" placeholder="Имя пользователя" required>
+      <div class="error" id="usernameError"></div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="password" placeholder="Пароль" required>
+      <div class="error" id="passwordError"></div>
+    </div>
+
+    <button type="submit">Войти</button>
+    <div class="error" id="loginError"></div>
+  </form>
+</div>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let usernameError = document.getElementById('usernameError');
+    let passwordError = document.getElementById('passwordError');
+    let loginError = document.getElementById('loginError');
+
+    usernameError.textContent = '';
+    passwordError.textContent = '';
+    loginError.textContent = '';
+
+    if (username !== 'admin' || password !== 'admin_password') {
+      loginError.textContent = 'Неверное имя пользователя или пароль';
+      return;
+    }
+
+    alert('Успешный вход!');
+  });
+</script>
+</body>
+</html>
